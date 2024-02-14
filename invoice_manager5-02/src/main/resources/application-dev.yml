@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/securecapita
+    password: root
+    username: root
+  sql:
+    init:
+      mode: never
+jwt:
+  secret: mysupercomplexsecret;
