@@ -8,3 +8,8 @@ spring:
       mode: never
 jwt:
   secret: mysupercomplexsecret;
+server:
+  error:
+    path: /user/error
+    whitelabel:
+      enabled: false

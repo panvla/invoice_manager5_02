@@ -9,6 +9,7 @@ import com.vladimirpandurov.invoice_manager502.form.LoginForm;
 import com.vladimirpandurov.invoice_manager502.provider.TokenProvider;
 import com.vladimirpandurov.invoice_manager502.service.RoleService;
 import com.vladimirpandurov.invoice_manager502.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -74,6 +75,17 @@ public class UserResource {
                 .message("Profile Retrieved")
                 .status(HttpStatus.OK)
                 .statusCode(HttpStatus.OK.value())
+                .build()
+        );
+    }
+    @RequestMapping("/error")
+    public ResponseEntity<HttpResponse> handleError(HttpServletRequest request){
+        return ResponseEntity.badRequest().body(
+                HttpResponse.builder()
+                .timeStamp(LocalDateTime.now().toString())
+                .reason("An error occurred " + request.getMethod())
+                .status(HttpStatus.NOT_FOUND)
+                .statusCode(HttpStatus.NOT_FOUND.value())
                 .build()
         );
     }
