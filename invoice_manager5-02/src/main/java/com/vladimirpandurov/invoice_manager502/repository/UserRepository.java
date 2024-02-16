@@ -18,4 +18,12 @@ public interface UserRepository<T extends User> {
     void sendVerificationCode(UserDTO userDTO);
 
     T verifyCode(String email, String code);
+
+    void resetPassword(String email);
+
+    T verifyPasswordKey(String key);
+
+    void renewPassword(String key, String password, String confirmPassowrd);
+
+    T verifyAccountKey(String key);
 }

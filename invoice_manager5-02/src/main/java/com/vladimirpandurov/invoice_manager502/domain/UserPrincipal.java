@@ -1,5 +1,7 @@
 package com.vladimirpandurov.invoice_manager502.domain;
 
+import com.vladimirpandurov.invoice_manager502.dto.UserDTO;
+import com.vladimirpandurov.invoice_manager502.dtomapper.UserDTOMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -48,5 +50,9 @@ public class UserPrincipal implements UserDetails {
     @Override
     public boolean isEnabled() {
         return this.user.isEnabled();
+    }
+
+    public UserDTO getUser(){
+        return UserDTOMapper.fromUser(this.user, role);
     }
 }
